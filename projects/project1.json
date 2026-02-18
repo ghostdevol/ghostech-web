@@ -1,0 +1,7 @@
+{
+  "name": "GhostTower Concept",
+  "summary": "Modular smart high-rise.",
+  "description": "Full writeup...",
+  "modelUrl": "../assets/models/tower.glb",
+  "camera": { "x": 5, "y": 3, "z": 8 }
+}
