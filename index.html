@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>WebView Loader</title>
-  <script defer src="js/app.js"></script>
-  <style>
-    body { display: flex; margin: 0; font-family: Arial; }
-    #sidebar { width: 200px; background: #111; color: white; padding: 10px; }
-    #sidebar a { display: block; color: white; margin: 10px 0; cursor: pointer; }
-    #content { flex: 1; padding: 20px; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Dashboard SPA</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="loader.js"></script>
 </head>
 <body>
 
-  <div id="sidebar">
-    <a data-page="home.html">Home</a>
-    <a data-page="page1.html">Page 1</a>
-    <a data-page="page2.html">Page 2</a>
-  </div>
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div id="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <nav class="nav">
+      <a href="#" data-page="home.html">Dashboard</a>
+      <a href="#" data-page="sensors.html">Sensors</a>
+      <a href="#" data-page="maps.html">Maps</a>
+      <a href="#" data-page="status.html">Status</a>
+      <a href="#" data-page="about.html">About</a>
+    </nav>
+  </aside>
 
-  <div id="content">
+  <!-- Main content -->
+  <main id="content">
     Loading...
-  </div>
+  </main>
 
 </body>
 </html>
