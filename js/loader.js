@@ -1,27 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const content = document.getElementById("content");
-  const links = document.querySelectorAll("[data-page]");
+  const links = document.querySelectorAll(".nav a");
 
   async function loadPage(page) {
     try {
       console.log("Loading:", page);
+      const response = await fetch(page);
+      if (!response.ok) throw new Error("Page not found");
 
-      const response = await fetch(`pages/${page}`);
       const html = await response.text();
-
       content.innerHTML = html;
-    } catch (error) {
-      content.innerHTML = "Error loading page.";
-      console.error(error);
+
+    } catch (err) {
+      content.innerHTML = "<h2>Error loading page.</h2>";
+      console.error(err);
     }
   }
 
-  // Load home by default
+  // Load default page
   loadPage("home.html");
 
+  // Add click listeners
   links.forEach(link => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", e => {
       e.preventDefault();
       const page = link.getAttribute("data-page");
       loadPage(page);
