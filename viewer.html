@@ -8,5 +8,105 @@
 <body>
   <canvas id="viewer"></canvas>
   <script src="js/viewer.js"></script>
+</body>r
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Phantom – Engine Build</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">ECU</a>
+    <a href="tune-select.html">Tunes</a>
+    <a href="flash.html">Flash</a>
+    <a href="gauges.html">Gauges</a>
+    <a href="build-sheet.html">Build Sheet</a>
+    <a href="engine-build.html">Engine Build</a>
+</nav>
+
+<main>
+    <h1>Engine Build</h1>
+
+    <div class="card">
+        <h3>Short Block</h3>
+        <label>Block:
+            <input id="block" placeholder="Stock / Closed deck / Sleeved">
+        </label><br><br>
+        <label>Pistons:
+            <input id="pistons" placeholder="Cast / Forged / Brand">
+        </label><br><br>
+        <label>Rods:
+            <input id="rods" placeholder="H-beam / I-beam / Brand">
+        </label><br><br>
+        <label>Crank:
+            <input id="crank" placeholder="OEM / Billet / Stroke">
+        </label>
+    </div>
+
+    <div class="card">
+        <h3>Top End</h3>
+        <label>Heads:
+            <input id="heads" placeholder="Stock / Ported / Brand">
+        </label><br><br>
+        <label>Cams:
+            <input id="cams" placeholder="Stage / Duration / Brand">
+        </label><br><br>
+        <label>Valvetrain:
+            <input id="valve" placeholder="Springs / Retainers / Etc">
+        </label>
+    </div>
+
+    <div class="card">
+        <h3>Fuel & Air</h3>
+        <label>Injectors:
+            <input id="injectors" placeholder="Size / Brand">
+        </label><br><br>
+        <label>Fuel Pump:
+            <input id="pump" placeholder="In-tank / External / Brand">
+        </label><br><br>
+        <label>Turbo / Supercharger:
+            <input id="boostSetup" placeholder="Model / Size">
+        </label>
+    </div>
+
+    <div class="card">
+        <h3>Summary</h3>
+        <pre id="engineSummary">Fill in fields above and click Generate.</pre>
+        <button onclick="generateEngineSummary()">Generate Build Sheet</button>
+    </div>
+</main>
+
+<script>
+function generateEngineSummary() {
+    const get = id => document.getElementById(id).value || "N/A";
+
+    const text =
+`PHANTOM ENGINE BUILD
+---------------------
+SHORT BLOCK
+Block:      ${get("block")}
+Pistons:    ${get("pistons")}
+Rods:       ${get("rods")}
+Crank:      ${get("crank")}
+
+TOP END
+Heads:      ${get("heads")}
+Cams:       ${get("cams")}
+Valvetrain: ${get("valve")}
+
+FUEL & AIR
+Injectors:  ${get("injectors")}
+Fuel Pump:  ${get("pump")}
+Boost:      ${get("boostSetup")}
+
+Generated:  ${new Date().toLocaleString()}`;
+
+    document.getElementById("engineSummary").textContent = text;
+}
+</script>
 </body>
 </html>
