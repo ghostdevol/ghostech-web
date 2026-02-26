@@ -1,80 +1,54 @@
+/* Layout */
 body {
-    margin: 0;
-    background: #0a0f1a;
-    color: #c9d1d9;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
 }
 
-/* Sidebar */
 #sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100vh;
-    background: #0d1117;
-    border-right: 1px solid #1f2937;
-    transform: translateX(-240px);
-    transition: transform 0.3s ease;
-    overflow-y: auto;
-    z-index: 1000;
+  width: 220px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100vh;
 }
 
-#sidebar.open {
-    transform: translateX(0);
+#logo img {
+  width: 120px;
+  margin-bottom: 2rem;
 }
 
-.sidebar-header {
-    padding: 60px;
-    text-align: center;
+/* Navigation */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 }
 
-.sidebar-logo {
-    width: 100%;
-    height: auto;
+.nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: 0.2s;
 }
 
-/* Page list */
-#page-list {
-    padding: 20px;
+.nav a:hover {
+  background: #222;
+  color: #00ffff; /* accent cyan */
 }
 
-.page-link {
-    display: block;
-    padding: 24px;
-    margin-bottom: 12px;
-    background: #111827;
-    color: #60a5fa;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.page-link:hover {
-    background: #1e293b;
-}
-
-/* Menu button */
-#menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: #111827;
-    color: #60a5fa;
-    border: none;
-    padding: 10px 14px;
-    font-size: 30px;
-    border-radius: 8px;
-    z-index: 1100;
-}
-
-/* Viewer */
-#viewer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    border: none;
+/* Main content */
+#content {
+  flex: 1;
+  padding: 2rem;
+  background: #f5f5f5;
+  min-height: 100vh;
 }
