@@ -1,36 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const sidebar = document.getElementById("sidebar");
-    const menuBtn = document.getElementById("menu-btn");
-    const pageList = document.getElementById("page-list");
-    const viewer = document.getElementById("viewer");
 
-    menuBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
+  const content = document.getElementById("content");
+  const links = document.querySelectorAll("[data-page]");
+
+  async function loadPage(page) {
+    try {
+      console.log("Loading:", page);
+
+      const response = await fetch(`pages/${page}`);
+      const html = await response.text();
+
+      content.innerHTML = html;
+    } catch (error) {
+      content.innerHTML = "Error loading page.";
+      console.error(error);
+    }
+  }
+
+  // Load home by default
+  loadPage("home.html");
+
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const page = link.getAttribute("data-page");
+      loadPage(page);
     });
+  });
 
-    fetch("pages/")
-        .then(response => response.text())
-        .then(text => {
-            const parser = new DOMParser();
-            const html = parser.parseFromString(text, "text/html");
-            const links = [...html.querySelectorAll("a")];
-
-            links.forEach(link => {
-                const name = link.textContent;
-                if (name.endsWith(".html")) {
-                    const cleanName = name.replace(".html", "");
-                    const a = document.createElement("a");
-                    a.textContent = cleanName;
-                    a.href = "#";
-                    a.className = "page-link";
-
-                    a.addEventListener("click", () => {
-                        viewer.src = "viewer.html?page=" + name;
-                        sidebar.classList.remove("open");
-                    });
-
-                    pageList.appendChild(a);
-                }
-            });
-        });
 });
