@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>GhosTech Web</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/loader.js" defer></script>
+  <meta charset="UTF-8" />
+  <title>WebView Loader</title>
+  <script defer src="js/app.js"></script>
+  <style>
+    body { display: flex; margin: 0; font-family: Arial; }
+    #sidebar { width: 200px; background: #111; color: white; padding: 10px; }
+    #sidebar a { display: block; color: white; margin: 10px 0; cursor: pointer; }
+    #content { flex: 1; padding: 20px; }
+  </style>
 </head>
 <body>
 
-<button id="menu-btn">☰</button>
+  <div id="sidebar">
+    <a data-page="home.html">Home</a>
+    <a data-page="page1.html">Page 1</a>
+    <a data-page="page2.html">Page 2</a>
+  </div>
 
-<div id="sidebar">
-    <div class="sidebar-header">
-        <img src="logo/logo.png" class="sidebar-logo">
-    </div>
-    <div id="page-list"></div>
-    <a href="pages/huggytune.html">HuggyTune</a>
-</div>
-
-<iframe id="viewer" src="viewer.html"></iframe>
+  <div id="content">
+    Loading...
+  </div>
 
 </body>
 </html>
