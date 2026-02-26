@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GhosTech Phantom</title>
+<style>
+    body {
+        background: #05070b;
+        color: #e5e5e5;
+        font-family: system-ui, sans-serif;
+        padding: 20px;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #00f0ff;
+        letter-spacing: 0.08em;
+    }
+    .subtitle {
+        color: #888;
+        margin-bottom: 20px;
+    }
+    .card {
+        background: #10131a;
+        padding: 16px;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        border: 1px solid #1f2430;
+    }
+    .card-title {
+        color: #9fa6c0;
+        text-transform: uppercase;
+        font-size: 13px;
+        margin-bottom: 8px;
+        letter-spacing: 0.12em;
+    }
+    .field {
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+    .btn {
+        background: #00f0ff;
+        color: #05070b;
+        padding: 10px;
+        border-radius: 6px;
+        border: none;
+        margin-right: 6px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .btn-secondary {
+        background: #222838;
+        color: #e5e5e5;
+    }
+    .gauge-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+    .gauge {
+        width: 48%;
+    }
+    .gauge-label {
+        color: #9fa6c0;
+        font-size: 12px;
+    }
+    .gauge-value {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    .bar {
+        height: 6px;
+        background: #1a1f2b;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .fill { height: 100%; background: #00f0ff; }
+    .fill-boost { background: #00ff7b; }
+    .fill-temp { background: #ffb000; }
+    .fill-afr { background: #ff3b6a; }
+    .log-line {
+        font-size: 12px;
+        color: #a5adc5;
+        margin-bottom: 2px;
+    }
+</style>
+</head>
+<body>
+
+<div class="logo">GhosTech Phantom</div>
+<div class="subtitle">Simulation • Bench • Flash • Log</div>
+
+<div class="card">
+    <div class="card-title">Vehicle / ECU</div>
+    <div class="field">Platform: Demo – 5.0L V8</div>
+    <div class="field">ECU: MED17.5 (Simulated)</div>
+    <div class="field">Status: Connected (Sim)</div>
+</div>
+
+<div class="card">
+    <div class="card-title">Tune Profile</div>
+    <div class="field">Map: Stage 1 – Safe Street</div>
+    <div class="field">Target Boost: 7 psi</div>
+    <div class="field">Fuel: 91+ Octane</div>
+</div>
+
+<div class="card">
+    <div class="card-title">Actions</div>
+    <button class="btn" onclick="simulatePull()">Simulate Pull</button>
+    <button class="btn btn-secondary">View Build Sheet</button>
+</div>
+
+<div class="card">
+    <div class="card-title">Live Gauges (Sim)</div>
+
+    <div class="gauge-row">
+        <div class="gauge">
+            <div class="gauge-label">RPM</div>
+            <div id="rpmValue" class="gauge-value">3250</div>
+            <div class="bar"><div id="rpmFill" class="fill" style="width:45%"></div></div>
+        </div>
+
+        <div class="gauge">
+            <div class="gauge-label">Boost (psi)</div>
+            <div id="boostValue" class="gauge-value">4.2</div>
+            <div class="bar"><div id="boostFill" class="fill fill-boost" style="width:60%"></div></div>
+        </div>
+    </div>
+
+    <div class="gauge-row">
+        <div class="gauge">
+            <div class="gauge-label">Coolant (°F)</div>
+            <div id="tempValue" class="gauge-value">192</div>
+            <div class="bar"><div id="tempFill" class="fill fill-temp" style="width:55%"></div></div>
+        </div>
+
+        <div class="gauge">
+            <div class="gauge-label">AFR</div>
+            <div id="afrValue" class="gauge-value">11.8</div>
+            <div class="bar"><div id="afrFill" class="fill fill-afr" style="width:70%"></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-title">Event Log</div>
+    <div id="log"></div>
+</div>
+
+<script>
+function simulatePull() {
+    const rpm = document.getElementById("rpmValue");
+    const rpmFill = document.getElementById("rpmFill");
+    const boost = document.getElementById("boostValue");
+    const boostFill = document.getElementById("boostFill");
+    const log = document.getElementById("log");
+
+    let value = 0;
+    log.innerHTML += `<div class="log-line">[SIM] Starting virtual pull…</div>`;
+
+    const interval = setInterval(() => {
+        value += 5;
+        if (value > 100) { clearInterval(interval); return; }
+
+        rpm.innerText = Math.floor(800 + value * 40);
+        rpmFill.style.width = value + "%";
+
+        boost.innerText = (value / 10).toFixed(1);
+        boostFill.style.width = value + "%";
+    }, 50);
+}
+</script>
+
+</body>
+</html>
