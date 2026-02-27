@@ -3,7 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
   const sidebarLinks = document.querySelectorAll(".nav a");
 
-  // Load HTML page into #content
+  /**
+   * Load HTML page into #content
+   * @param {string} page - The HTML filename to load
+   */
   async function loadPage(page) {
     try {
       console.log("Loading:", page);
@@ -14,14 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const html = await response.text();
       content.innerHTML = html;
 
-      // Initialize any tabs inside the new content
+      // Initialize internal tabs
       initTabs();
 
-      // If page has a specific JS file like viewer.js, dynamically load it
+      // Dynamically load viewer.js if page is viewer.html
       if (page === "viewer.html") {
-        const script = document.createElement("script");
-        script.src = "viewer.js";
-        document.body.appendChild(script);
+        const existing = document.getElementById("viewer-script");
+        if(!existing){
+          const script = document.createElement("script");
+          script.src = "viewer.js";
+          script.id = "viewer-script"; // prevent duplicate loading
+          document.body.appendChild(script);
+        }
       }
 
     } catch (err) {
@@ -30,13 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initialize tabs inside current content
+  /**
+   * Initialize tabs inside the loaded page
+   */
   function initTabs() {
     const tabButtons = content.querySelectorAll(".tab-btn");
     const tabContents = content.querySelectorAll(".tab-content");
 
     if(tabButtons.length === 0) return; // no tabs in this page
 
+    // Hide all tab contents
+    tabContents.forEach(c => c.style.display = "none");
+
+    // Show default tab
+    if(tabContents.length > 0) tabContents[0].style.display = "block";
+
+    // Attach click events to each tab button
     tabButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         tabContents.forEach(c => c.style.display = "none");
@@ -44,9 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if(target) target.style.display = "block";
       });
     });
-
-    // Show default tab if exists
-    if(tabContents.length > 0) tabContents[0].style.display = "block";
   }
 
   // Attach sidebar link events
@@ -58,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Load default page on start
+  // Load default page on startup
   loadPage("home.html");
 
 });
