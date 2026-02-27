@@ -1,38 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuning Dyno Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>350 Engine 3D Diagram</title>
+<style>
+  body {
+    background: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1000px;
+    font-family: Arial, sans-serif;
+  }
+
+  .engine-container {
+    width: 400px;
+    height: 250px;
+    transform-style: preserve-3d;
+    transform: rotateX(20deg) rotateY(-20deg);
+    transition: transform 0.5s;
+    cursor: grab;
+  }
+
+  .engine-part {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background: linear-gradient(145deg, #555, #222);
+    border: 2px solid #999;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* Engine block */
+  .engine-block {
+    width: 300px;
+    height: 150px;
+    background: linear-gradient(135deg, #333, #111);
+    border: 2px solid #888;
+    border-radius: 10px;
+    position: relative;
+    left: 50px;
+    top: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+  }
+
+  /* Cylinder heads */
+  .cylinder-head {
+    width: 60px;
+    height: 50px;
+    background: #666;
+    border: 2px solid #aaa;
+    position: absolute;
+    border-radius: 5px;
+  }
+
+  .cylinder-head:nth-child(1) { left: 20px; top: -60px; }
+  .cylinder-head:nth-child(2) { left: 90px; top: -60px; }
+  .cylinder-head:nth-child(3) { left: 160px; top: -60px; }
+  .cylinder-head:nth-child(4) { left: 230px; top: -60px; }
+
+  /* Crankshaft */
+  .crankshaft {
+    width: 250px;
+    height: 20px;
+    background: #444;
+    border-radius: 10px;
+    position: absolute;
+    top: 140px;
+    left: 75px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  }
+
+  /* Pistons */
+  .piston {
+    width: 40px;
+    height: 50px;
+    background: #999;
+    border: 1px solid #555;
+    border-radius: 5px;
+    position: absolute;
+  }
+
+  .piston:nth-child(1) { left: 30px; top: 50px; }
+  .piston:nth-child(2) { left: 100px; top: 50px; }
+  .piston:nth-child(3) { left: 170px; top: 50px; }
+  .piston:nth-child(4) { left: 240px; top: 50px; }
+
+</style>
 </head>
 <body>
-    <header>
-        <h1>Tuning Dyno Dashboard</h1>
-    </header>
-    <main>
-        <section id="gauge-section">
-            <div class="gauge" id="map-gauge">
-                <h2>MAP Gauge (Manifold Absolute Pressure)</h2>
-                <canvas id="mapCanvas" width="200" height="200"></canvas>
-            </div>
-            <div class="gauge" id="boost-gauge">
-                <h2>Boost Pressure Gauge</h2>
-                <canvas id="boostCanvas" width="200" height="200"></canvas>
-            </div>
-            <div class="gauge" id="air-mass-flow-gauge">
-                <h2>Air Mass Flow Gauge</h2>
-                <canvas id="airMassFlowCanvas" width="200" height="200"></canvas>
-            </div>
-            <div class="gauge" id="air-pressure-gauge">
-                <h2>Air Pressure Gauge</h2>
-                <canvas id="airPressureCanvas" width="200" height="200"></canvas>
-            </div>
-        </section>
-        <footer>
-            <p>&copy; 2023 Tuning Dyno Systems</p>
-        </footer>
-    </main>
-    <script src="script.js"></script>
+
+<div class="engine-container">
+
+  <!-- Engine Block -->
+  <div class="engine-block">
+    <!-- Cylinder Heads -->
+    <div class="cylinder-head">Head 1</div>
+    <div class="cylinder-head">Head 2</div>
+    <div class="cylinder-head">Head 3</div>
+    <div class="cylinder-head">Head 4</div>
+
+    <!-- Pistons -->
+    <div class="piston">Piston 1</div>
+    <div class="piston">Piston 2</div>
+    <div class="piston">Piston 3</div>
+    <div class="piston">Piston 4</div>
+
+    <!-- Crankshaft -->
+    <div class="crankshaft"></div>
+  </div>
+
+</div>
+
+<script>
+  // Optional: simple drag rotation
+  const container = document.querySelector('.engine-container');
+  let isDragging = false;
+  let lastX, lastY;
+  let rotationX = 20, rotationY = -20;
+
+  container.addEventListener('mousedown', e => {
+    isDragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+
+  window.addEventListener('mouseup', () => isDragging = false);
+
+  window.addEventListener('mousemove', e => {
+    if(!isDragging) return;
+    const deltaX = e.clientX - lastX;
+    const deltaY = e.clientY - lastY;
+    rotationY += deltaX * 0.5;
+    rotationX -= deltaY * 0.5;
+    container.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  });
+</script>
+
 </body>
 </html>
