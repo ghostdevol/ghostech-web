@@ -1,145 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>GhosTech UI Preview</title>
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #0a0a18 0%, #03030a 60%, #000000 100%);
-    color: #e5e9ff;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackout Wallet Explorer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-  .wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 28px 18px 60px;
-  }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Share Tech Mono', monospace;
+            background: #0f0f14;
+            color: #e0e0e0;
+        }
 
-  .title {
-    font-size: 26px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #7df9ff;
-    text-shadow: 0 0 14px rgba(125, 249, 255, 0.8);
-    margin-bottom: 6px;
-  }
+        header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            background: linear-gradient(90deg, #ff4f4f, #ff8f4f);
+            color: #fff;
+            box-shadow: 0 0 20px #ff4f4f;
+        }
 
-  .subtitle {
-    font-size: 14px;
-    color: #a4acff;
-    margin-bottom: 26px;
-    line-height: 1.5;
-  }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #ff4f4f;
+        }
 
-  .section {
-    margin-bottom: 26px;
-    padding: 16px 18px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #0b0b1a, #050510);
-    border: 1px solid rgba(125, 249, 255, 0.22);
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
-    position: relative;
-    overflow: hidden;
-  }
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #ffd1a1;
+        }
 
-  .section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top left, rgba(125, 249, 255, 0.18), transparent 60%);
-    pointer-events: none;
-  }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
 
-  .section-title {
-    font-size: 15px;
-    color: #ffffff;
-    margin-bottom: 8px;
-    text-shadow: 0 0 8px rgba(255,255,255,0.4);
-  }
+        h2 {
+            color: #4fc3f7;
+            cursor: pointer;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+            transition: 0.3s;
+        }
 
-  .section-text {
-    font-size: 13px;
-    color: #c2c7ff;
-    line-height: 1.5;
-  }
+        h2:hover {
+            color: #00ffff;
+            text-shadow: 0 0 8px #00ffff;
+        }
 
-  .tag {
-    display: inline-block;
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 999px;
-    border: 1px solid rgba(159, 139, 255, 0.7);
-    color: #d0c7ff;
-    margin-right: 6px;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-</style>
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 0;
+        }
+
+        .section-content.open {
+            padding: 10px 0 20px 0;
+            max-height: 1000px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+        }
+
+        code, pre {
+            background: #1b1b25;
+            padding: 10px;
+            border-radius: 6px;
+            display: block;
+            overflow-x: auto;
+            color: #00ffcc;
+            text-shadow: 0 0 3px #00ffcc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #222;
+            margin-top: 60px;
+        }
+
+        a {
+            color: #ff8f4f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #ff4f4f;
+            text-shadow: 0 0 6px #ff4f4f;
+        }
+    </style>
 </head>
-
 <body>
-<div class="wrap">
 
-  <div class="title">GhosTech UI Update</div>
-  <div class="subtitle">
-    A first look at the new neon‑tech interface coming soon to the GhosTech ecosystem.
-    Cleaner visuals, sharper controls, and a more immersive technician‑grade workflow.
-  </div>
+<header>
+    <h1>Blackout Wallet Explorer</h1>
+    <p>Secure, sleek, and futuristic wallet management</p>
+</header>
 
-  <div class="section">
-    <div class="section-title">New Visual Style</div>
-    <div class="section-text">
-      The entire interface has been redesigned with a deeper neon aesthetic, glowing accents,
-      and smoother transitions across all modules.
+<div class="container">
+
+    <h2 onclick="toggleSection('overview')">Overview</h2>
+    <div id="overview" class="section-content">
+        <p>The <strong>Blackout Wallet Explorer</strong> allows users to view, track, and interact with blockchain wallets safely. It is designed for maximum transparency while keeping your private keys secure.</p>
     </div>
-    <div class="tag">Neon UI</div>
-    <div class="tag">Dark Mode</div>
-    <div class="tag">Animated Panels</div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">Enhanced Control Layout</div>
-    <div class="section-text">
-      Modules now feature clearer separation, improved readability, and more intuitive access
-      to technician tools and device information.
+    <h2 onclick="toggleSection('features')">Features</h2>
+    <div id="features" class="section-content">
+        <ul>
+            <li>View wallet balances and transaction history</li>
+            <li>Supports multiple blockchain networks</li>
+            <li>Responsive, lightweight interface</li>
+            <li>Advanced search and filtering of transactions</li>
+            <li>Offline mode for privacy</li>
+        </ul>
     </div>
-    <div class="tag">Cleaner Panels</div>
-    <div class="tag">Faster Navigation</div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">USAS Control Improvements</div>
-    <div class="section-text">
-      The USAS module has been expanded with more precise controls, improved feedback indicators,
-      and a streamlined workflow for advanced users.
+    <h2 onclick="toggleSection('security')">Security Model</h2>
+    <div id="security" class="section-content">
+        <p>The Blackout Wallet Explorer uses a multi-layered security approach:</p>
+        <ul>
+            <li><strong>Local Wallet Storage:</strong> Private keys never leave your device.</li>
+            <li><strong>Encrypted Data:</strong> All wallet info is encrypted at rest.</li>
+            <li><strong>Read-Only Blockchain Access:</strong> Default interactions are read-only, preventing unauthorized transactions.</li>
+            <li><strong>Open Source Transparency:</strong> Verify the code to audit security.</li>
+        </ul>
+        <p>Example code snippet:</p>
+        <pre><code>wallet.Unlock(key)
+defer wallet.Destroy()
+sig, err := wallet.Sign(tx)</code></pre>
     </div>
-    <div class="tag">Precision</div>
-    <div class="tag">Status Indicators</div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">Mirror Screen Preview</div>
-    <div class="section-text">
-      A refined preview interface prepares the way for the upcoming Mirror Screen module,
-      offering a more immersive and synchronized device‑interaction experience.
+    <h2 onclick="toggleSection('getting-started')">Getting Started</h2>
+    <div id="getting-started" class="section-content">
+        <ol>
+            <li>Download and install Blackout Wallet Explorer from the official source.</li>
+            <li>Open the app and select "Import Wallet" or "Create New Wallet".</li>
+            <li>View balances and transactions securely without exposing your keys.</li>
+        </ol>
     </div>
-    <div class="tag">Preview Mode</div>
-    <div class="tag">Sync Ready</div>
-  </div>
 
-  <div class="section">
-    <div class="section-title">Coming Soon</div>
-    <div class="section-text">
-      This update marks the next evolution of the GhosTech ecosystem.
-      More modules, more control, and a more powerful technician environment are on the way.
+    <h2 onclick="toggleSection('notes')">Important Notes</h2>
+    <div id="notes" class="section-content">
+        <ul>
+            <li>Never share your private keys or seed phrases.</li>
+            <li>Always verify the source of downloads.</li>
+            <li>Use offline mode for maximum security when inspecting sensitive wallets.</li>
+        </ul>
     </div>
-    <div class="tag">Ecosystem Upgrade</div>
-    <div class="tag">Next Release</div>
-  </div>
 
 </div>
+
+<footer>
+    &copy; 2026 Blackout Wallet Explorer | Cyber Security Focused
+</footer>
+
+<script>
+    function toggleSection(id) {
+        const section = document.getElementById(id);
+        section.classList.toggle('open');
+    }
+</script>
+
 </body>
 </html>
