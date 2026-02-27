@@ -2,149 +2,104 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>350 Engine 3D Diagram</title>
+<title>GhosTech Designs</title>
 <style>
   body {
-    background: #1e1e1e;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    perspective: 1000px;
-    font-family: Arial, sans-serif;
   }
 
-  .engine-container {
-    width: 400px;
-    height: 250px;
-    transform-style: preserve-3d;
-    transform: rotateX(20deg) rotateY(-20deg);
-    transition: transform 0.5s;
-    cursor: grab;
-  }
-
-  .engine-part {
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    background: linear-gradient(145deg, #555, #222);
-    border: 2px solid #999;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  .container {
+    max-width: 900px;
+    padding: 2rem;
     text-align: center;
-    color: #fff;
-    line-height: 50px;
-    font-size: 12px;
-    font-weight: bold;
   }
 
-  /* Engine block */
-  .engine-block {
-    width: 300px;
+  .logo {
+    width: 150px;
     height: 150px;
-    background: linear-gradient(135deg, #333, #111);
-    border: 2px solid #888;
-    border-radius: 10px;
-    position: relative;
-    left: 50px;
-    top: 50px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
   }
 
-  /* Cylinder heads */
-  .cylinder-head {
-    width: 60px;
-    height: 50px;
-    background: #666;
-    border: 2px solid #aaa;
-    position: absolute;
-    border-radius: 5px;
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #00ffff;
   }
 
-  .cylinder-head:nth-child(1) { left: 20px; top: -60px; }
-  .cylinder-head:nth-child(2) { left: 90px; top: -60px; }
-  .cylinder-head:nth-child(3) { left: 160px; top: -60px; }
-  .cylinder-head:nth-child(4) { left: 230px; top: -60px; }
-
-  /* Crankshaft */
-  .crankshaft {
-    width: 250px;
-    height: 20px;
-    background: #444;
-    border-radius: 10px;
-    position: absolute;
-    top: 140px;
-    left: 75px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ff00ff;
   }
 
-  /* Pistons */
-  .piston {
-    width: 40px;
-    height: 50px;
-    background: #999;
-    border: 1px solid #555;
-    border-radius: 5px;
-    position: absolute;
+  p {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .piston:nth-child(1) { left: 30px; top: 50px; }
-  .piston:nth-child(2) { left: 100px; top: 50px; }
-  .piston:nth-child(3) { left: 170px; top: 50px; }
-  .piston:nth-child(4) { left: 240px; top: 50px; }
+  .features {
+    text-align: left;
+    margin-top: 2rem;
+  }
 
+  .features li {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: #00ffff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 </style>
 </head>
 <body>
 
-<div class="engine-container">
+<div class="container">
 
-  <!-- Engine Block -->
-  <div class="engine-block">
-    <!-- Cylinder Heads -->
-    <div class="cylinder-head">Head 1</div>
-    <div class="cylinder-head">Head 2</div>
-    <div class="cylinder-head">Head 3</div>
-    <div class="cylinder-head">Head 4</div>
+  <!-- Logo -->
+  <div class="logo">G</div>
 
-    <!-- Pistons -->
-    <div class="piston">Piston 1</div>
-    <div class="piston">Piston 2</div>
-    <div class="piston">Piston 3</div>
-    <div class="piston">Piston 4</div>
+  <!-- Brand Name -->
+  <h1>GhosTech Designs</h1>
+  <h2>Innovative, Clean, Impactful</h2>
 
-    <!-- Crankshaft -->
-    <div class="crankshaft"></div>
-  </div>
+  <!-- About -->
+  <p>GhosTech Designs is a creative brand specializing in modern digital design, 2D & 3D graphics, and interactive web experiences. Our goal is to deliver clean, impactful, and highly aesthetic designs that resonate with technology and modern culture enthusiasts.</p>
+
+  <!-- Features / Services -->
+  <ul class="features">
+    <li>Brand & Logo Design</li>
+    <li>Web & UI Design</li>
+    <li>2D & 3D Graphics</li>
+    <li>Interactive Dashboards & Visualizations</li>
+    <li>Modern Color & Typography Styling</li>
+    <li>Open to collaborations on creative projects</li>
+  </ul>
+
+  <!-- Contact / Links -->
+  <p>Learn more: <a href="https://github.com/Ghostdevol" target="_blank">GitHub</a> | <a href="#" target="_blank">Portfolio</a></p>
 
 </div>
-
-<script>
-  // Optional: simple drag rotation
-  const container = document.querySelector('.engine-container');
-  let isDragging = false;
-  let lastX, lastY;
-  let rotationX = 20, rotationY = -20;
-
-  container.addEventListener('mousedown', e => {
-    isDragging = true;
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-
-  window.addEventListener('mouseup', () => isDragging = false);
-
-  window.addEventListener('mousemove', e => {
-    if(!isDragging) return;
-    const deltaX = e.clientX - lastX;
-    const deltaY = e.clientY - lastY;
-    rotationY += deltaX * 0.5;
-    rotationX -= deltaY * 0.5;
-    container.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    lastX = e.clientX;
-    lastY = e.clientY;
-  });
-</script>
 
 </body>
 </html>
