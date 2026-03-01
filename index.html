@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackout Wallet Explorer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Share Tech Mono', monospace;
+            background: #0f0f14;
+            color: #e0e0e0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            background: linear-gradient(90deg, #ff4f4f, #ff8f4f);
+            color: #fff;
+            box-shadow: 0 0 20px #ff4f4f;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px #ff4f4f;
+        }
+
+        header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #ffd1a1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            color: #4fc3f7;
+            cursor: pointer;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        h2:hover {
+            color: #00ffff;
+            text-shadow: 0 0 8px #00ffff;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            padding: 0 0;
+        }
+
+        .section-content.open {
+            padding: 10px 0 20px 0;
+            max-height: 1000px;
+        }
+      
